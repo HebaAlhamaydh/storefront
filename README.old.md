@@ -16,4 +16,4 @@ displays a list of products associated with the selected category
 - As a user, I want to choose a category and see a list of all available products matching that category
 - As a user, I want a clean, easy to use user interface so that I can shop the online store with confidence
 ## UML
-![]()
+![](./uml.png)
