@@ -50,6 +50,15 @@ const initialState = {
             inventoryCount: 10,
             image: "https://img.alicdn.com/imgextra/i3/6000000002686/O1CN01XZNjlD1ViEPM2UsCk_!!6000000002686-0-tbvideo.jpg"
         },
+        {   id : 6,
+            categoryId : 3,
+            categoryAssociation: "Fashion",
+            displayName: "Baby Clothes",
+            description: "Baby Clothes",
+            price: "15$",
+            inventoryCount: 10,
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZpiIzU99eeVKEwJgriE_KhHX21ppyq7LCGQ&usqp=CAU"
+        },
     ],
     selectedProducts: {}
 };
