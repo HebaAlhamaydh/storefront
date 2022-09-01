@@ -1,15 +1,12 @@
 # storefront
 ## [AppLink](https://storefront-eight-sand.vercel.app/)
 ## Description
-Create application simulates a virtual store to display products
+create an e-Commerce storefront using React with Redux, coupled with live API server.
 ## Features
 an App component that serves as the container for all sub-components of this application
 a component which shows the name of your virtual store
-a component which shows your copyright and contact information
-a component
-shows a list of all categories
-dispatches an action when one is clicked to “activate” it
-a component
+a component which shows your copyright and contact information a component shows a list of all categories
+dispatches an action when one is clicked to “activate” it a component
 displays a list of products associated with the selected category
 ## Phase 1 Requirements
 - As a user, I expect to see a list of available product categories in the store so that I can easily browse products
