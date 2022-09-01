@@ -1,4 +1,5 @@
 # storefront
+
 ## [AppLink](https://storefront-eight-sand.vercel.app/)
 ## Description
 create an e-Commerce storefront using React with Redux, coupled with live API server.
@@ -14,3 +15,5 @@ displays a list of products associated with the selected category
 - As a user, I want a clean, easy to use user interface so that I can shop the online store with confidence
 ## UML
 ![](./uml.png)
+
+
