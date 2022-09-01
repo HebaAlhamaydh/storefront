@@ -26,7 +26,6 @@ function Products(props) {
                               alt="green iguana"
                             />
                             <CardContent>
-                      
                               <Typography gutterBottom variant="h5" component="div">
                               {product.displayName}
                               </Typography>
@@ -36,26 +35,22 @@ function Products(props) {
                               <Typography variant="body2" color="text.secondary">
                               {product.price}
                               </Typography>
-                      
                             </CardContent>
+                            
                             <CardActions>
                               <Button size="small">ADD TO CART</Button>
                               <Button size="small">VIEW DETAILS</Button>
                             </CardActions>
                           </Card>
-                         
                           <br/>
                           <br/>
                           </div>
-                          
                         )
-
                     }
                 })
             }
         </div>
     )
-
 }
 
 const mapStateToProps = (state) => ({
