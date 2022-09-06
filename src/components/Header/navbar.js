@@ -4,10 +4,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-
-import Button from '@mui/material/Button';
-
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SimpleCart from "../cart/simpleCart"
