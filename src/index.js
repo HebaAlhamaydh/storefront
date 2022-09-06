@@ -7,9 +7,11 @@ import { BrowserRouter } from "react-router-dom";
 const rootEl = document.getElementById("root");
 function Main() {
     return (
+        <BrowserRouter>
         <Provider store={mystore}>
             <App />
         </Provider>
+        </BrowserRouter>
 
     )
 }
