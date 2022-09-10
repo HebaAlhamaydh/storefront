@@ -1,6 +1,5 @@
 import superagent from 'superagent';
 let api="https://heba-auth-api.herokuapp.com/v1/products";
-// let api = "https://app-auth-obieda.herokuapp.com/api/v1/products";
 // let api="https://api.escuelajs.co/api/v1/products"
 
 const initialState = {
