@@ -1,5 +1,6 @@
 import Header from './components/Header/header';
 import Footer from './components/Footer/footer';
+// import Categories from './components/Categories/category';
 import Categories from './components/Categories/catogorise';
 import Cart from './components/cart/cart'
 import Products from './components/Products/products'
@@ -14,7 +15,7 @@ import './App.css';
 
 function App() {
   return (
-    <div >
+    <div class="App">
       <Header />
       
       <Routes>
