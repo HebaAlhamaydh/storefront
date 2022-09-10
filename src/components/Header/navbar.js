@@ -10,7 +10,7 @@ import SimpleCart from "../cart/simpleCart"
 
 
 
-function ButtonAppBar(props) {
+function ButtonAppBar(prop) {
  
   return (
     <>
@@ -31,7 +31,7 @@ function ButtonAppBar(props) {
        
        <SimpleCart/>
  
-          <h2>({props.cart.cartItemsCount})</h2>
+          <h2>({prop.cart.cartItemsCount})</h2>
           
         </Toolbar>
       </AppBar>

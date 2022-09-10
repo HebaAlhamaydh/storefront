@@ -2,25 +2,28 @@ import React from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { connect } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';
 import { selectCategory } from '../../store/catogoriseReducer';
-// import ActiveCategory from "../activecategory/activeCategory"
+import { propfind } from 'superagent';
+
 
 function TabPanel(props) {
-    const { children, value, index} = props;
-
+    const { children, value, index } = props;
+   
     return (
         <div>
             {value === index && (
-                <h1>{children}</h1> 
+                <h1>{children}</h1>
             )}
         </div>
     );
 }
 
 const Categoriess = props => {
-    const categories = props.categories;
+    
+    // const dispatchData=useDispatch();
+
     const selectCategory = props.selectCategory;
     const [value, setValue] = useState(0);
 
@@ -29,13 +32,16 @@ const Categoriess = props => {
     };
     
     useEffect(() => {
+        // dispatchData(getRemoteCategorise())
+        // dispatchData(getRemoteProduct())
         selectCategory(value + 1);
+
     }, [value,selectCategory]);
 
     return (
         <div >
             <h1>Browse Our Categories</h1>
-         
+
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Electronics" />
@@ -44,23 +50,31 @@ const Categoriess = props => {
                 </Tabs>
             </Box>
             {
-                categories.map((category, indx) => {
+               props.categories.categories.map((category, indx) => {
                     return (
-                        <div>
+                        <div class="center">
                             <TabPanel value={value} index={indx}>
-                                <h1>{category.name}</h1>
-                                <p>{category.description}</p>
+                                <h4 text-align="center">{category.dispalyName}</h4>
+                                <h5>{category.description}</h5>
                             </TabPanel>
                         </div>
                     )
-                })}
-                {/* <ActiveCategory/> */}
+                })
+            }
+            {/* {
+                <div className=' bg-white shadow-md shadow-black flex flex-col h-auto p-4 rounded-md'>
+                    <h1 className='font-bold'>{activeCategory?.displayName}</h1>
+                    <p>{activeCategory?.description}</p>
+                </div>
+
+            } */}
+
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.categoryReducer.categories,
+    categories:state.categoryReducer
 });
 
 const mapDispatchToProps = { selectCategory };
