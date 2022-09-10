@@ -97,7 +97,7 @@ function SimpleCart(props) {
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'left'
-                }}><h1>{props.cart.cartItemsCount} items Total Price Is:{props.cart.totalPrice + '$'}</h1>
+                }}><h2>{props.cart.cartItemsCount} Items{props.cart.totalPrice + '$'} Total Price </h2>
                 {props.cart.cartItemsCount > 0 ? (
                     <Button size="small" variant="outlined" color="error" onClick={() => props.clearCart()}>EMPTY CART</Button>) : (
                     // <p style={{fontSize: 23, }}> Your Card is Empty </p>
