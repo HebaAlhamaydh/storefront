@@ -4,16 +4,17 @@ import { useParams } from "react-router-dom"
 import { useEffect } from 'react'
 import { Card, CardActions, CardContent, CardMedia, Button, Typography, Grid, Popover, Box } from '@mui/material';
 import { addToCart } from '../../store/cartReducer';
+
 import { decrementProductQuantity, getRemoteProduct } from '../../store/productReducer';
 function ProductDetails(props) {
     const { id } = useParams()
 
     //   const dispatchData = useDispatch();
-    //   useEffect(() => {if (id) {
-    //     // do something with user_id
-    //   }
+    //   useEffect(() =>{ 
+    //   dispatchData(setActiveProd(id))
     //   }, [id])
     return (
+       
         <div>
             {
                 props.products.map((product, index) => {

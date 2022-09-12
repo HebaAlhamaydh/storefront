@@ -1,88 +1,157 @@
 import superagent from 'superagent';
+import { createSlice } from '@reduxjs/toolkit'
 let api="https://heba-auth-api.herokuapp.com/v1/products";
 // let api="https://api.escuelajs.co/api/v1/products"
 
-const initialState = {
-    products: [],
-}
-
-export default function productReducer(state = initialState, action) {
-
-    const { type, payload } = action;
-    switch (type) {
-        case "GET_PRODUCT":
-            return {
-                products: payload,
-            }
-
-        case 'Decrement_Product_Quantity':
-            let newproducts = state.products.map(product => {
-                if (product.id === payload && product.inventoryCount > 0) {
-                    // product.inventoryCount=product.inventoryCount>0?product.inventoryCount-1:'Sold Out'
-                    return {
-                        ...product,
-                        inventoryCount: product.inventoryCount - 1
-                    };
-                } else {
-                    return product;
-                }
-            })
-            return {
-                ...state,
-                products: newproducts
-            }
-        case 'Increment_Product_Quantity':
-
+const prodSlice = createSlice({
+    name:'products',
+    initialState:{products: []},
+    reducers: {
+        getActionProduct(state, action) {
+            state.products = action.payload;
+        },
+        // setActiveProd(state, action) {
+        //     state.products = action.payload;
+        // },
+       incrementProductQuantityd(state, action) {
             let newproducts1 = state.products.map(product => {
              
-                if (product.id === payload.id ) {
-
+            if (product.id === action.payload.id) {
+                console.log(action.payload.inventoryCount);
+             return {
+                ...product,
+                inventoryCount: product.inventoryCount + 1
+                };
+                 } else {
+                     return product;
+                    }
+                    })
                     return {
-                        ...product,
-                        inventoryCount: product.inventoryCount + 1
-                    };
+                          ...state,
+                         products: newproducts1
+                            }
+        },
+        decrementProductQuantity(state, action) {
+            let newproducts = state.products.map(product => {
+                 if (product.id ==action.payload ) {
+                      return {
+                    ...product,
+                    inventoryCount: product.inventoryCount - 1
+                  };
                 } else {
-                    return product;
-                }
-            })
-            return {
-                ...state,
-                products: newproducts1
-            }
-
-        default:
-            return state;
+                     return product;
+                 }
+                 })
+                 return {
+                    ...state,
+                     products: newproducts
+                    }
+        }      
     }
-}
-//actions
+})
+       
+        
+    
 
-export const decrementProductQuantity = (value) => {
-    return {
-        type: 'Decrement_Product_Quantity',
-        payload: value
-    }
-
-}
-export const incrementProductQuantity = (value) => {
-    return {
-        type: 'Increment_Product_Quantity',
-        payload: value
-    }
-
-}
 export const getRemoteProduct = () => (dispatch) => {
     return superagent.get(api).then((data) => {
-        console.log(data.body);
         dispatch(getActionProduct(data.body));
     })
 }
-export const getActionProduct = payload => {
+// export const getProduct = (id) => async dispatch => {
+//     return superagent.get(`https://heba-auth-api.herokuapp.com/v1/products/${id}`).then((data) => {
+//     dispatch(setActiveProd(data.body));
+// })
+// }
+  
+export const { incrementProductQuantity, decrementProductQuantity,getActionProduct } = prodSlice.actions
 
-    return {
-        type: 'GET_PRODUCT',
-        payload: payload
-    }
-}
+export default prodSlice.reducer
+
+// const initialState = {
+//     products: [],
+// }
+
+// export default function productReducer(state = initialState, action) {
+
+//     const { type, payload } = action;
+//     switch (type) {
+//         case "GET_PRODUCT":
+//             return {
+//                 products: payload,
+//             }
+
+//         case 'Decrement_Product_Quantity':
+//             let newproducts = state.products.map(product => {
+//                 if (product.id === payload && product.inventoryCount > 0) {
+//                     // product.inventoryCount=product.inventoryCount>0?product.inventoryCount-1:'Sold Out'
+//                     return {
+//                         ...product,
+//                         inventoryCount: product.inventoryCount - 1
+//                     };
+//                 } else {
+//                     return product;
+//                 }
+//             })
+//             return {
+//                 ...state,
+//                 products: newproducts
+//             }
+//         case 'Increment_Product_Quantity':
+
+//             let newproducts1 = state.products.map(product => {
+             
+//                 if (product.id === payload.id ) {
+
+//                     return {
+//                         ...product,
+//                         inventoryCount: product.inventoryCount + 1
+//                     };
+//                 } else {
+//                     return product;
+//                 }
+//             })
+//             return {
+//                 ...state,
+//                 products: newproducts1
+//             }
+
+//         default:
+//             return state;
+//     }
+// }
+// //actions
+
+// export const decrementProductQuantity = (value) => {
+//     return {
+//         type: 'Decrement_Product_Quantity',
+//         payload: value
+//     }
+
+// }
+// export const incrementProductQuantity = (value) => {
+//     return {
+//         type: 'Increment_Product_Quantity',
+//         payload: value
+//     }
+
+// }
+// export const getRemoteProduct = () => (dispatch) => {
+//     return superagent.get(api).then((data) => {
+//         console.log(data.body);
+//         dispatch(getActionProduct(data.body));
+//     })
+// }
+// export const getActionProduct = payload => {
+
+//     return {
+//         type: 'GET_PRODUCT',
+//         payload: payload
+//     }
+// }
+
+
+
 // const initialState = {
 //     products: [
 //         {
