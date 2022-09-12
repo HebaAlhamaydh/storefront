@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import { connect} from "react-redux";
 import { useEffect, useState } from 'react';
 import { selectCategory } from '../../store/catogoriseReducer';
-
+import Products from "../Products/products"
 
 
 function TabPanel(props) {
@@ -38,6 +38,7 @@ const Categoriess = props => {
     }, [value,selectCategory]);
 
     return (
+        <>
         <div >
             <h1>Browse Our Categories</h1>
 
@@ -69,6 +70,8 @@ const Categoriess = props => {
             } */}
 
         </div>
+        <Products /> 
+        </>
     )
 }
 

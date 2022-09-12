@@ -4,15 +4,15 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import {CardActions,CardContent,CardMedia,Button,Typography} from '@mui/material';
 import { addToCart } from '../../store/cartReducer';
-import { decrementProductQuantity, getRemoteProduct } from '../../store/productReducer';
+import { decrementProductQuantity, getRemoteProduct} from '../../store/productReducer';
 import { useEffect } from 'react'
 import "./product.css"
 
 
 function Products(props) {
+
   const dispatchData = useDispatch();
   useEffect(() => {
-   
     dispatchData(getRemoteProduct())
   }, [])
 
@@ -54,9 +54,9 @@ function Products(props) {
                     <Button variant="outlined" color="error">
                       Sold out
                     </Button>
-                  )}
+                  )} 
                   <Button size="small" component={Link} to={`/ProductDetails/${product.id}`}>VIEW DETAILS</Button>
-                  
+  
                 </CardActions>
               </Card>
             )
@@ -71,6 +71,6 @@ const mapStateToProps = (state) => ({
   products: state.productReducer.products
 
 });
-const mapDispatchToProps = { addToCart, decrementProductQuantity, getRemoteProduct };
+const mapDispatchToProps = { addToCart, decrementProductQuantity, getRemoteProduct};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

@@ -44,7 +44,7 @@ export default function cartReducer(state = initialState, action) {
                  
                 } else {
                         itemd.quantity--;
-                         itemd.inventoryCount++;
+                        //  itemd.inventoryCount++;
                         state.cartItemsCount--;
                         state.totalPrice -=payload.price
                     }    
