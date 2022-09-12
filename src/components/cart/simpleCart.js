@@ -2,7 +2,6 @@ import { Card, CardActions, CardContent, CardMedia, Button, Typography, Grid, Po
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useState } from 'react';
 import { connect } from "react-redux";
-import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { removeFromCart } from "../../store/cartReducer";
 import { increaseQuantity, decreaseQuantity, clearCart } from "../../store/cartReducer"
 import { decrementProductQuantity, incrementProductQuantity } from "../../store/productReducer"
@@ -54,11 +53,9 @@ function SimpleCart(props) {
                        
                         <Button variant="contained" color="success" onClick={() => { props.increaseQuantity(product); props.decrementProductQuantity(product.id) }}>+</Button>
                         <Button >{product.quantity}</Button>
-                        <Button variant="contained" onClick={() => { props.decreaseQuantity(product); props.incrementProductQuantity(product.id) }}>-</Button>
-                      
+                        <Button variant="contained" onClick={() => { props.decreaseQuantity(product); props.incrementProductQuantity(product) }}>-</Button>
 
                     </CardContent>
-
                     <CardActions>
                         <Button
                             variant="outlined" color="error"
@@ -72,12 +69,8 @@ function SimpleCart(props) {
 
                 </Card>
             </Grid>
-
-
-
         )
     }))
-
 
     return (
         <div>
@@ -98,9 +91,12 @@ function SimpleCart(props) {
                     vertical: 'bottom',
                     horizontal: 'left'
                 }}><h2>{props.cart.cartItemsCount} Items{props.cart.totalPrice + '$'} Total Price </h2>
+            {/* <Button variant="contained" color="success" >Buy</Button> */}
                 {props.cart.cartItemsCount > 0 ? (
-                    <Button size="small" variant="outlined" color="error" onClick={() => props.clearCart()}>EMPTY CART</Button>) : (
-                    // <p style={{fontSize: 23, }}> Your Card is Empty </p>
+                    <Button size="small" variant="outlined" color="error" onClick={() => props.clearCart()}>EMPTY CART</Button>)
+                    : (
+                        <>
+                    <h1> Your Card is Empty </h1>
                     <Box
                         component="img"
                         sx={{
@@ -111,6 +107,7 @@ function SimpleCart(props) {
                         }}
                         src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWHNj9PK7N9WLGXRF5FDbA7XdtjH6caLiwnBW2__PWC3crRyS_XiocBVKnP9GONqvVp9A&usqp=CAU'
                     />
+                    </>
                 )}
                 <Typography sx={{ p: 3 }}>{productsInCart()}</Typography>
 

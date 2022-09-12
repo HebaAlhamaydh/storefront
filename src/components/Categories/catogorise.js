@@ -2,10 +2,10 @@ import React from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { connect, useSelector, useDispatch } from "react-redux";
+import { connect} from "react-redux";
 import { useEffect, useState } from 'react';
 import { selectCategory } from '../../store/catogoriseReducer';
-import { propfind } from 'superagent';
+
 
 
 function TabPanel(props) {
@@ -32,7 +32,6 @@ const Categoriess = props => {
     };
     
     useEffect(() => {
-        // dispatchData(getRemoteCategorise())
         // dispatchData(getRemoteProduct())
         selectCategory(value + 1);
 
