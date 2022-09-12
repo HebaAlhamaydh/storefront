@@ -1,5 +1,4 @@
-import { MenuItemUnstyled } from '@mui/base';
-import React from 'react'
+
 
 const initialState = {
     cartItems: [],
@@ -30,11 +29,11 @@ export default function cartReducer(state = initialState, action) {
            // let deletedItem = state.cartItems.indexOf(payload);
             // state.cartItems.splice(deletedItem, 1);
              let deleteItem=state.cartItems.filter((item,indx)=>item.id !== payload.id)
-            let total = state.cartItemsCount - 1;
+            let total = state.cartItemsCount-payload.quantity;
            
             return {
                 cartItems:deleteItem,
-                cartItemsCount: total,
+                cartItemsCount:total,
                 totalPrice:state.totalPrice -=payload.price
             }
             case 'DECREASE_QUANTITY' :

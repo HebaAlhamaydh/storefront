@@ -29,6 +29,9 @@ function ButtonAppBar(prop) {
          OUR STORE
        </Typography>
        
+        {/* <Link to="/cart" >
+        ShoppingCart
+            </Link> */}
        <SimpleCart/>
  
           <h2>({prop.cart.cartItemsCount})</h2>

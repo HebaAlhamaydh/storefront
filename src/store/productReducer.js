@@ -34,8 +34,8 @@ export default function productReducer(state = initialState, action) {
         case 'Increment_Product_Quantity':
 
             let newproducts1 = state.products.map(product => {
-
-                if (product.id === payload ) {
+             
+                if (product.id === payload.id ) {
 
                     return {
                         ...product,
